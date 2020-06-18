@@ -12,7 +12,7 @@ composer require ycpfzf/vcode
 ````
 php artisan vendor:publish
 ````
-在列表中选择 Ycpfzf\Apidoc\DocServiceProvider，运行完毕会在config文件夹生成配置文件vcode.php
+在列表中选择 Ycpfzf\Apidoc\VcodeServiceProvider，运行完毕会在config文件夹生成配置文件vcode.php
 
 
 #### 使用
