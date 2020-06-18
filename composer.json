@@ -1,0 +1,36 @@
+{
+    "name": "ycpfzf/vcode",
+    "description": "laravel sms&email validdate code",
+    "type": "library",
+    "keywords": ["laravel", "sms", "email","validate"],
+    "homepage": "https://github.com/z-song/laravel-admin",   
+    "license": "Apache-2.0",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "fzf",
+            "email": "ysfzf@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "laravel/framework": ">=5.5",
+        "flc/dysms": "^1.0"
+    },
+    "require-dev": {
+        "laravel/laravel": ">=5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ycpfzf\\Vcode\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Barryvdh\\Debugbar\\ServiceProvider"
+            ]           
+        }
+    }    
+   
+}
