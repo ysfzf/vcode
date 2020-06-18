@@ -33,22 +33,22 @@ php artisan vendor:publish
 使用laravel的Mail发送邮件，所以请先配置后发件参数
 ````
 //不指定场景时，默认是default,会使用模板resources/vidws/emails/default.blade.php
- Ycpfzf\Vcode\Vcode::email()->name('ysfzf@hotmail.com')->subject('验证码')->send();
+ Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->subject('验证码')->send();
 
 //使用模板resources/vidws/emails/login.blade.php
- Ycpfzf\Vcode\Vcode::email()->name('ysfzf@hotmail.com')->subject('验证码')->scene('login')->send();
+ Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->subject('验证码')->scene('login')->send();
 
  //使用模板resources/vidws/code/login.blade.php
- Ycpfzf\Vcode\Vcode::email()->name('ysfzf@hotmail.com')->subject('验证码')->scene('code.login')->send();
+ Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->subject('验证码')->scene('code.login')->send();
 
  //向模板传递参数，请注意 $code是要发送的验证码
- Ycpfzf\Vcode\Vcode::email()->name('ysfzf@hotmail.com')->subject('验证码')->scene('code.login')->assgin($data)->send();
+ Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->subject('验证码')->scene('code.login')->assgin($data)->send();
 ````
 
 3 验证验证码是否正确
 
 ````
-if(Ycpfzf\Vcode\Vcode::email()->name('ysfzf@hotmail.com')->check(353283)){
+if(Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->check(353283)){
     echo '验证成功了';
 }else{
     echo '验证码不正确';
@@ -62,7 +62,7 @@ if(Ycpfzf\Vcode\Vcode::email()->name('ysfzf@hotmail.com')->check(353283)){
 请先配置好队列，否则可能返回发送成功，但实际没有发送
 ````
  Ycpfzf\Vcode\Vcode::sms()->name('13800138000')->queue();
- Ycpfzf\Vcode\Vcode::email()->name('ysfzf@hotmail.com')->subject('验证码')->queue();
+ Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->subject('验证码')->queue();
 ````
 
 
