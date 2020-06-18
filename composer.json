@@ -28,7 +28,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Barryvdh\\Debugbar\\ServiceProvider"
+                "Ycpfzf\\Vcode\\VcodeServiceProvider"
             ]           
         }
     }    
