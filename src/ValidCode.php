@@ -72,6 +72,12 @@ class ValidCode
     }
 
     function queue(){
+        if($this->driver=='sms' && !self::isMobile($this->name)){
+            throw new \Exception('手机号格式不正确');
+        }
+        if($this->driver=='email' && !self::isEmail($this->name)){
+            throw new \Exception('邮箱格式不正确');
+        }
         SendJob::dispatch($this);
         return true;
     }
@@ -80,7 +86,7 @@ class ValidCode
         if(empty($this->scene)||empty($this->name)||empty($this->driver)){
             throw new \Exception('缺少参数');
         }
-        return "{$this->name}{$this->key}{$this->driver}_{$this->scene}";
+        return md5("{$this->name}{$this->key}{$this->driver}_{$this->scene}");
     }
     protected function sendSms($code){
         if(!self::isMobile($this->name)){
@@ -89,6 +95,9 @@ class ValidCode
         $config=config('vcode.sms');
         if(!key_exists($this->scene,$config['templates'])){
             throw new \Exception("场景值{$this->scene}不存在");
+        }
+        if(empty($config['templates'][$this->scene])){
+            throw new \Exception("场景值{$this->scene}不能为空");
         }
         $client  = new Client([
                 'accessKeyId'    => $config['accessKeyId'],
