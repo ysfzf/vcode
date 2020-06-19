@@ -3,7 +3,7 @@
     "description": "laravel sms&email validdate code",
     "type": "library",
     "keywords": ["laravel", "sms", "email","validate"],
-    "homepage": "https://github.com/z-song/laravel-admin",   
+    "homepage": "https://github.com/mynameisfzf/vcode",   
     "license": "Apache-2.0",
     "minimum-stability": "dev",
     "authors": [
