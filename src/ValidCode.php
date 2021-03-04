@@ -17,7 +17,7 @@ class ValidCode
 
     protected $assign=[];  //邮件传递给视图的变量
     protected $subject='';  //邮件主题
-    protected $view_path='emails';
+  //  protected $view_path='emails';
     function __construct()
     {
         $this->config=config('vcode.code');
@@ -122,16 +122,22 @@ class ValidCode
             throw new \Exception('邮箱格式不正确');
         }
 
-        if(strpos($this->scene,'.')>0){
-            $view=$this->scene;
-        }else{
-            $view=$this->view_path.'.'.$this->scene;
+        // if(strpos($this->scene,'.')>0){
+        //     $view=$this->scene;
+        // }else{
+        //     $view=$this->view_path.'.'.$this->scene;
+        // }
+        $config=config('vcode.email');
+        if(!key_exists($this->scene,$config['templates'])){
+            throw new \Exception("场景值{$this->scene}不存在");
         }
-
+        // if(empty($config['templates'][$this->scene])){
+        //     throw new \Exception("场景值{$this->scene}不能为空");
+        // }
         $data=$this->assign;
         $data['code']=$code;
 
-        Mail::send($view,$data,function($message){
+        Mail::send($config['templates'][$this->scene],$data,function($message){
             $message->to($this->name)->subject($this->subject);
         });
         $err=Mail::failures();

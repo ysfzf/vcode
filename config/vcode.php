@@ -15,7 +15,13 @@ return [
         'templates'           => [
             'default'         =>'',
         ]
+    ],
+    'email'=>[
+        'templates'         =>[
+            'default'       =>'emails/default',
+        ]
     ]
+
 ];
 
 

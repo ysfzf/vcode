@@ -32,17 +32,14 @@ php artisan vendor:publish
 
 使用laravel的Mail发送邮件，所以请先配置后发件参数
 ```php
-//不指定场景时，默认是default,会使用模板resources/vidws/emails/default.blade.php
+//不指定场景时，默认是default
  Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->subject('验证码')->send();
 
-//使用模板resources/vidws/emails/login.blade.php
+//指定场景时，配置文件中的 ['email']['templates']指定使用的模板文件
  Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->subject('验证码')->scene('login')->send();
 
- //使用模板resources/vidws/code/login.blade.php
- Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->subject('验证码')->scene('code.login')->send();
-
  //向模板传递参数，请注意 $code是要发送的验证码
- Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->subject('验证码')->scene('code.login')->assgin($data)->send();
+ Ycpfzf\Vcode\Vcode::email()->name('user@test.com')->subject('验证码')->scene('login')->assgin($data)->send();
 ```
 
 3 验证验证码是否正确
